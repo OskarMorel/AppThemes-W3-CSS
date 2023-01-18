@@ -5,4 +5,11 @@
     <RootNamespace>AppThemes_W3_CSS</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketContentAPI\RocketContentAPI.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketDirectoryAPI\RocketDirectoryAPI.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketEcommerceAPI\RocketEcommerceAPI.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocket\API\DNNrocketAPI.csproj" />
+  </ItemGroup>
+
 </Project>
