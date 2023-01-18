@@ -1,7 +1,7 @@
 ﻿@inherits RocketContentAPI.Components.RocketContentAPITokens<Simplisity.SimplisityRazor>
 @using DNNrocketAPI;
 @using Simplisity;
-@using RocketContentAPI.Components;;
+@using RocketContentAPI.Components;
 @using DNNrocketAPI.Components;
 @using RocketPortal.Components;
 
@@ -53,6 +53,7 @@
 
         @if (!headingHide)
         {
+            var title = info.GetXmlProperty("genxml/lang/genxml/textbox/title");
             var headingalignvalue = info.GetXmlPropertyInt("genxml/select/headingalign");
             var headingalign = "";
             if (headingalignvalue == 1)
@@ -69,14 +70,27 @@
                 hStyle = "h1";
             }
 
-                if (info.GetXmlProperty("genxml/lang/genxml/textbox/title") != "")
+            if (title != "")
+            {
+            <div class="w3-padding @(headingalign)">
+                @if (hStyle.ToLower() == "h1")
                 {
-                <div class="w3-padding @(headingalign)">
-                    <@(hStyle)>
-                        @info.GetXmlProperty("genxml/lang/genxml/textbox/title")
-                    </@(hStyle)>                    
-                </div>
+                    <h1>@title</h1>
                 }
+                @if (hStyle.ToLower() == "h2")
+                {
+                    <h2>@title</h2>
+                }
+                @if (hStyle.ToLower() == "h3")
+                {
+                    <h3>@title</h3>
+                }
+                @if (hStyle.ToLower() == "h4")
+                {
+                    <h4>@title</h4>
+                }
+            </div>
+            }
         }
 
         @if (layout == 0)
