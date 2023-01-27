@@ -1,28 +1,45 @@
-@inherits RocketCatalog.Components.RocketCatalogTokens<Simplisity.SimplisityRazor>
+@inherits RocketDirectoryAPI.Components.RocketDirectoryAPITokens<Simplisity.SimplisityRazor>
+@using RocketDirectoryAPI.Components;
 @using DNNrocketAPI;
 @using Simplisity;
 @using RocketPortal.Components;
-@using RocketCatalog.Components;
 @using DNNrocketAPI.Components;
+@using System.Globalization;
+@using Rocket.AppThemes.Components;
 
-@{ 
+@{
+    var sessionParams = (SessionParams)Model.SessionParamsData;
+    var appThemeSystem = (AppThemeSystemLimpet)Model.GetDataObject("appthemesystem");
+    var appThemeDirectory = (AppThemeSystemLimpet)Model.GetDataObject("appthemedirectory");
+    var portalData = (PortalLimpet)Model.GetDataObject("portaldata");
+    var systemData = (SystemLimpet)Model.GetDataObject("systemdata");
+    var portalContent = (PortalCatalogLimpet)Model.GetDataObject("portalcontent");
+    var appThemeProjects = (AppThemeProjectLimpet)Model.GetDataObject("appthemeprojects");
+    var defaultData = (DefaultsLimpet)Model.GetDataObject("defaultdata");
+    var moduleSettings = (ModuleContentLimpet)Model.GetDataObject("modulesettings");
+    var globalSettings = (SystemGlobalData)Model.GetDataObject("globalsettings");
+    var appThemeDefault = (AppThemeLimpet)Model.GetDataObject("appthemedefault");
+    var appThemeView = (AppThemeLimpet)Model.GetDataObject("appthemeview");
+    var appThemeAdmin = (AppThemeLimpet)Model.GetDataObject("appthemeadmin");
+    var appThemeDataListView = (AppThemeDataList)Model.GetDataObject("appthemedatalistview");
+    var appThemeDataListAdmin = (AppThemeDataList)Model.GetDataObject("appthemedatalistadmin");
+    var catalogSettings = (CatalogSettingsLimpet)Model.GetDataObject("catalogsettings");
+    var catalogList = (CategoryLimpetList)Model.GetDataObject("categorylist");
+    var propertyList = (PropertyLimpetList)Model.GetDataObject("propertylist");
+    var dashBoard = (DashboardLimpet)Model.GetDataObject("dashboard");
+
+    AddProcessDataResx(appThemeAdmin, true);
+    AddProcessData("resourcepath", systemData.SystemRelPath + "/App_LocalResources/");
+    AddProcessData("resourcepath", "/DesktopModules/DNNrocket/Images/App_LocalResources/");
+
+    var articleData = (ArticleLimpet)Model.GetDataObject("articledata");
     var info = new SimplisityInfo();
-    var articleData = (ArticleLimpet)Model.List.First();
     if (articleData.Info != null)
     {
         info = articleData.Info;
     }
-    var portalCatalog = new PortalCatalogLimpet(articleData.PortalId, DNNrocketUtils.GetEditCulture(), articleData.SystemKey);
-    var appThemeSystem = new AppThemeSystemLimpet(portalCatalog.PortalId, portalCatalog.SystemKey);
-    var sessionParams = Model.SessionParamsData;
-    var portalData = new PortalLimpet(portalCatalog.PortalId);
-    var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme"); 
-}
 
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/Images/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketCatalog/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/RocketThemes/" + portalCatalog.ProjectName + "/" + portalCatalog.AppThemeAdminFolder + "/" + portalCatalog.AppThemeAdminVersion + "/resx/")
+}
 
 @RenderLanguageSelector("articleadmin_editarticle", "{\"articleid\":\"" + articleData.ArticleId + "\"}", appThemeSystem, Model)
 

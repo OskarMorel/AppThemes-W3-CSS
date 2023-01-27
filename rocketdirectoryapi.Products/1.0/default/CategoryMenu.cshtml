@@ -1,8 +1,8 @@
-﻿@inherits RocketCatalog.Components.RocketCatalogTokens<Simplisity.SimplisityRazor>
+﻿@inherits RocketDirectoryAPI.Components.RocketDirectoryAPITokens<Simplisity.SimplisityRazor>
 @using DNNrocketAPI;
 @using Simplisity;
 @using RocketPortal.Components;
-@using RocketCatalog.Components;
+@using RocketDirectoryAPI.Components;
 @using DNNrocketAPI.Components;
 
 @{ var categoryList = (CategoryLimpetList)Model.GetDataObject("categorylist");
@@ -11,7 +11,7 @@
                 var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme"); }
 
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketCatalog/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketDirectoryAPI/App_LocalResources/")
 @AddProcessData("resourcepath", appTheme.AppThemeVersionFolderRel + "/resx/")
 
 
