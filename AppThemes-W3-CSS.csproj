@@ -6,10 +6,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketContentAPI\RocketContentAPI.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketDirectoryAPI\RocketDirectoryAPI.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketEcommerceAPI\RocketEcommerceAPI.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\Projects\DesktopModules\DNNrocket\API\DNNrocketAPI.csproj" />
+    <Reference Include="DNNrocketAPI">
+      <HintPath>..\..\..\bin\DNNrocketAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RocketAppThemes">
+      <HintPath>..\..\..\bin\RocketAppThemes.dll</HintPath>
+    </Reference>
+    <Reference Include="RocketContentAPI">
+      <HintPath>..\..\..\bin\RocketContentAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RocketDirectoryAPI">
+      <HintPath>..\..\..\bin\RocketDirectoryAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RocketEcommerceAPI">
+      <HintPath>..\..\..\bin\RocketEcommerceAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RocketPortal">
+      <HintPath>..\..\..\bin\RocketPortal.dll</HintPath>
+    </Reference>
+    <Reference Include="Simplisity">
+      <HintPath>..\..\..\bin\Simplisity.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

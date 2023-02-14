@@ -1,27 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33122.133
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppThemes-W3-CSS", "AppThemes-W3-CSS.csproj", "{ED7C7951-16E1-447B-ABD5-2E6960830682}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNrocketAPI", "..\..\..\..\..\..\Projects\DesktopModules\DNNrocket\API\DNNrocketAPI.csproj", "{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RocketDirectoryAPI", "..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketDirectoryAPI\RocketDirectoryAPI.csproj", "{77293C96-9B03-4068-AB1D-ED11DFDAAF86}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RocketEcommerceAPI", "..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketEcommerceAPI\RocketEcommerceAPI.csproj", "{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RocketContentAPI", "..\..\..\..\..\..\Projects\DesktopModules\DNNrocketModules\RocketContentAPI\RocketContentAPI.csproj", "{8679C58F-9AF2-4398-8297-B1EF73FDAB41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B272C665-3061-4D28-A229-4FD10B6429D2}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\..\..\..\Projects\DesktopModules\dnnpack.config = ..\..\..\..\..\..\Projects\DesktopModules\dnnpack.config
 		..\..\DNNrocket\css\rocket.css = ..\..\DNNrocket\css\rocket.css
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppThemes", "..\..\..\..\..\..\Projects\DesktopModules\DNNrocket\RocketAppTheme\AppThemes.csproj", "{13DE7053-D560-4726-A484-A9ECC8623554}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplisity", "..\..\..\..\..\..\Projects\DesktopModules\DNNrocket\Simplisity\Simplisity.csproj", "{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,48 +27,6 @@ Global
 		{ED7C7951-16E1-447B-ABD5-2E6960830682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED7C7951-16E1-447B-ABD5-2E6960830682}.Razor|Any CPU.ActiveCfg = Release|Any CPU
 		{ED7C7951-16E1-447B-ABD5-2E6960830682}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Comp All|Any CPU.ActiveCfg = Comp All|Any CPU
-		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Comp All|Any CPU.Build.0 = Comp All|Any CPU
-		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.CompAll|Any CPU.ActiveCfg = CompAll|Any CPU
-		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.CompAll|Any CPU.Build.0 = CompAll|Any CPU
-		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Razor|Any CPU.ActiveCfg = Razor|Any CPU
-		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77293C96-9B03-4068-AB1D-ED11DFDAAF86}.Comp All|Any CPU.ActiveCfg = Comp All|Any CPU
-		{77293C96-9B03-4068-AB1D-ED11DFDAAF86}.Comp All|Any CPU.Build.0 = Comp All|Any CPU
-		{77293C96-9B03-4068-AB1D-ED11DFDAAF86}.CompAll|Any CPU.ActiveCfg = CompAll|Any CPU
-		{77293C96-9B03-4068-AB1D-ED11DFDAAF86}.CompAll|Any CPU.Build.0 = CompAll|Any CPU
-		{77293C96-9B03-4068-AB1D-ED11DFDAAF86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77293C96-9B03-4068-AB1D-ED11DFDAAF86}.Razor|Any CPU.ActiveCfg = Razor|Any CPU
-		{77293C96-9B03-4068-AB1D-ED11DFDAAF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}.Comp All|Any CPU.ActiveCfg = Comp All|Any CPU
-		{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}.Comp All|Any CPU.Build.0 = Comp All|Any CPU
-		{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}.CompAll|Any CPU.ActiveCfg = CompAll|Any CPU
-		{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}.CompAll|Any CPU.Build.0 = CompAll|Any CPU
-		{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}.Razor|Any CPU.ActiveCfg = Razor|Any CPU
-		{BCD71480-D6FF-4983-86EB-ABCCC79FC5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8679C58F-9AF2-4398-8297-B1EF73FDAB41}.Comp All|Any CPU.ActiveCfg = Debug|Any CPU
-		{8679C58F-9AF2-4398-8297-B1EF73FDAB41}.Comp All|Any CPU.Build.0 = Debug|Any CPU
-		{8679C58F-9AF2-4398-8297-B1EF73FDAB41}.CompAll|Any CPU.ActiveCfg = Debug|Any CPU
-		{8679C58F-9AF2-4398-8297-B1EF73FDAB41}.CompAll|Any CPU.Build.0 = Debug|Any CPU
-		{8679C58F-9AF2-4398-8297-B1EF73FDAB41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8679C58F-9AF2-4398-8297-B1EF73FDAB41}.Razor|Any CPU.ActiveCfg = Release|Any CPU
-		{8679C58F-9AF2-4398-8297-B1EF73FDAB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13DE7053-D560-4726-A484-A9ECC8623554}.Comp All|Any CPU.ActiveCfg = Comp All|Any CPU
-		{13DE7053-D560-4726-A484-A9ECC8623554}.Comp All|Any CPU.Build.0 = Comp All|Any CPU
-		{13DE7053-D560-4726-A484-A9ECC8623554}.CompAll|Any CPU.ActiveCfg = CompAll|Any CPU
-		{13DE7053-D560-4726-A484-A9ECC8623554}.CompAll|Any CPU.Build.0 = CompAll|Any CPU
-		{13DE7053-D560-4726-A484-A9ECC8623554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13DE7053-D560-4726-A484-A9ECC8623554}.Razor|Any CPU.ActiveCfg = Razor|Any CPU
-		{13DE7053-D560-4726-A484-A9ECC8623554}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}.Comp All|Any CPU.ActiveCfg = Comp All|Any CPU
-		{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}.Comp All|Any CPU.Build.0 = Comp All|Any CPU
-		{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}.CompAll|Any CPU.ActiveCfg = CompAll|Any CPU
-		{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}.CompAll|Any CPU.Build.0 = CompAll|Any CPU
-		{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}.Razor|Any CPU.ActiveCfg = Razor|Any CPU
-		{6AA7DD00-49A7-4E0A-8FF1-B70439BA4CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
