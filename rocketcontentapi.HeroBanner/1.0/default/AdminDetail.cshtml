@@ -28,26 +28,20 @@
 @HiddenField(info, "genxml/config/rowkey")
 @HiddenField(info, "genxml/lang/genxml/config/rowkeylang", "", articleRowData.RowKey)
 
-@EditFlag(sessionParams)
-
-
-        <div class='w3-row w3-padding '>
-            @RenderTemplate("ArticleImages.cshtml", appThemeSystem, Model, true)
-            @RenderTemplate("ArticleImageSelect.cshtml", appThemeSystem, Model, true)
+<div class="w3-row">
+    <div class="w3-col m3 w3-padding" style="max-width:210px;">
+        @RenderTemplate("ArticleImage.cshtml", appThemeSystem, Model, true)
+    </div>
+    <div class="w3-col m9 w3-padding">
+        <div class="w3-container w3-col box form-group">
+            <label>Line 1</label>@EditFlag(sessionParams)
+            @TextBox(info, "genxml/lang/genxml/textbox/title", " class='w3-input w3-border' autocomplete='off' ", "", true)
         </div>
-   
-   
-    <div class="w3-container w3-col box form-group">
-        <label>Line 1</label>
-        <div class="input-group">
-            <input value="" id="text" class="w3-row tab" style="display:none">
-            @TextBox(info, "genxml/lang/genxml/textbox/title", " class='w3-input w3-border' ", "", true)
+        <div class="w3-container w3-col box form-group">
+            <label>Line 2</label>@EditFlag(sessionParams)
+            @TextBox(info, "genxml/lang/genxml/textbox/title2", " class='w3-input w3-border' autocomplete='off' ", "", true)
         </div>
     </div>
-    <div class="w3-container w3-col box form-group">
-        <label>Line 2</label>
-        <div class="input-group">
-            <input value="" id="text" class="w3-row tab" style="display:none">
-            @TextBox(info, "genxml/lang/genxml/textbox/title2", " class='w3-input w3-border' ", "", true)
-        </div>
-    </div>
+</div>
+   
+   
