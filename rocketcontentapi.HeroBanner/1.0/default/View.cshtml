@@ -22,15 +22,14 @@
     if (articleRowData.GetImageList().Count > 0)
     {
         var img = articleRowData.GetImages().First();
-        var width = Model.GetSettingInt("width");
-        var height = Model.GetSettingInt("height");
-        <h1>@height</h1>
-        <div class="w3-display-container" style="height:575px;background:url('@ImageUrl(img.RelPath, width, height)')  @Model.GetSetting("crop") no-repeat;
+        var width = moduleData.GetSettingInt("width");
+        var height = moduleData.GetSettingInt("height");
+        <div class="w3-display-container" style="height:575px;background:url('@ImageUrl(img.RelPath, width, height)')  @moduleData.GetSetting("crop") no-repeat;
           -webkit-background-size: cover;
           -moz-background-size: cover;
         -o-background-size: cover;
   background-size: cover;">
-            <div class="caption w3-display-middle w3-center">
+            <div class="w3-display-middle w3-center">
                 <h2>@info.GetXmlProperty("genxml/lang/genxml/textbox/title")</h2>
                 <h3>@info.GetXmlProperty("genxml/lang/genxml/textbox/title2")</h3>
             </div>
