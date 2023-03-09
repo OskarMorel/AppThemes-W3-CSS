@@ -25,90 +25,105 @@
     {
         <div class="w3-xlarge">@info.GetXmlProperty("genxml/lang/genxml/textbox/company")</div>
 
-        <br />
+   
         if (info.GetXmlProperty("genxml/textbox/adress") != "")
         {
-            <label>Adress</label>
-            <span>@info.GetXmlProperty("genxml/textbox/adress")</span>
+<div>
+    <label>Adress</label>
+    @info.GetXmlProperty("genxml/textbox/adress")
+</div>
         }
-        <br />
+    
         if (info.GetXmlProperty("genxml/textbox/tel1") != "")
-        {
-            <label>Tel. 1</label>
-            <span>@info.GetXmlProperty("genxml/textbox/tel1")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/tel2") != "")
-        {
-            <label>Tel. 2</label>
-            <span>  @info.GetXmlProperty("genxml/textbox/tel2")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/fax") != "")
-        {
-            <label>Fax</label>
-            <span> @info.GetXmlProperty("genxml/textbox/fax")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/email") != "")
-        {
-            <label>Email</label>
-            <span>   @info.GetXmlProperty("genxml/textbox/email")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/contact1") != "")
-        {
-            <label>Contact 1</label>
-            <span>   @info.GetXmlProperty("genxml/textbox/contact1")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/contactname1") != "")
-        {
-            <label>Contact name 1</label>
-            <span>  @info.GetXmlProperty("genxml/textbox/contactname1")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/mobile1") != "")
-        {
-            <label>Mobile 1</label>
-            <span>  @info.GetXmlProperty("genxml/textbox/mobile1")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/email1") != "")
-        {
-            <label>Email 1</label>
-            <span>  @info.GetXmlProperty("genxml/textbox/email1")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/contact2") != "")
-        {
-            <label>Contact 2</label>
-            <span>   @info.GetXmlProperty("genxml/textbox/contact2")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/contactname2") != "")
-        {
-            <label>Contact name 2</label>
-            <span>    @info.GetXmlProperty("genxml/textbox/contactname2")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/mobile2") != "")
-        {
-            <label>Mobile 2</label>
-            <span>  @info.GetXmlProperty("genxml/textbox/mobile2")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/textbox/email2") != "")
-        {
-            <label>Email 2</label>
-            <span> @info.GetXmlProperty("genxml/textbox/email2")</span>
-        }
-        <br />
-        if (info.GetXmlProperty("genxml/lang/genxml/textbox/extrainfo") != "")
-        {
-            <label>Extra info</label>
-            <span> @info.GetXmlProperty("genxml/lang/genxml/textbox/extrainfo")</span>
-        }
+        {<div>
+    <label>Tel. 1</label>
+    @info.GetXmlProperty("genxml/textbox/tel1")
+</div>
+    }
+ 
+    if (info.GetXmlProperty("genxml/textbox/tel2") != "")
+    {<div>
+    <label>Tel. 2</label>
+    @info.GetXmlProperty("genxml/textbox/tel2")
+</div>
+    }
+ 
+    if (info.GetXmlProperty("genxml/textbox/fax") != "")
+    {<div>
+    <label>Fax</label>
+    @info.GetXmlProperty("genxml/textbox/fax")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/email") != "")
+    {<div>
+    <label>Email</label>
+    @info.GetXmlProperty("genxml/textbox/email")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/contact1") != "")
+    {<div>
+    <label>Contact 1</label>
+    @info.GetXmlProperty("genxml/textbox/contact1")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/contactname1") != "")
+    {<div>
+    <label>Contact name 1</label>
+    @info.GetXmlProperty("genxml/textbox/contactname1")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/mobile1") != "")
+    {<div>
+    <label>Mobile 1</label>
+    @info.GetXmlProperty("genxml/textbox/mobile1")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/email1") != "")
+    {<div>
+    <label>Email 1</label>
+    @info.GetXmlProperty("genxml/textbox/email1")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/contact2") != "")
+    {<div>
+    <label>Contact 2</label>
+    @info.GetXmlProperty("genxml/textbox/contact2")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/contactname2") != "")
+    {<div>
+    <label>Contact name 2</label>
+    @info.GetXmlProperty("genxml/textbox/contactname2")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/mobile2") != "")
+    {<div>
+    <label>Mobile 2</label>
+    @info.GetXmlProperty("genxml/textbox/mobile2")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/textbox/email2") != "")
+    {<div>
+    <label>Email 2</label>
+    @info.GetXmlProperty("genxml/textbox/email2")
+</div>
+    }
+
+    if (info.GetXmlProperty("genxml/lang/genxml/textbox/extrainfo") != "")
+    {<div>
+    <label>Extra info</label>
+    @info.GetXmlProperty("genxml/lang/genxml/textbox/extrainfo")
+</div>
+    }
     }
 </div>
 }
