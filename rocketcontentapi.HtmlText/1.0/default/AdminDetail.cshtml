@@ -57,30 +57,19 @@
 </div>
 
 <script>
+    var myCodeMirror;
+
     $(document).ready(function () {
         var tabName = simplisity_getCookieValue('tabName@(sessionParams.ModuleId)');
         if (tabName == null || tabName == '') {
             tabName = 'html';
         }
-        openTab(tabName);
+
+        openTab(tabName, false);
 
         $('.a-savebutton').attr('s-before','saveeditordata');
 
-        setTimeout(() => {
-            // pause to allow codemirror.js to load.
-            $('#editorwrapper').show();
-
-            myCodeMirror = CodeMirror.fromTextArea(document.getElementById("htmltext"), {
-                mode: 'htmlmixed',
-                theme: "night"
-            });
-
-            myCodeMirror.setSize($('#editorwrapper').width(), $('#editorwrapper').height());
-            $('#htmltext').focus();
-
-
-        }, 500);
-
+        showCodeMirror();
 
     });
 
@@ -88,7 +77,7 @@
         $('#htmltext').val(myCodeMirror.getValue());
     }
 
-    function openTab(tabName) {
+    function openTab(tabName, reload = true) {
         var i;
         var x = document.getElementsByClassName("tab");
         for (i = 0; i < x.length; i++) {
@@ -100,8 +89,22 @@
             $(this).removeClass('w3-grey');
         });
         $('.menu' + tabName).addClass('w3-grey');
-        simplisity_setCookieValue('tabName@(sessionParams.ModuleId)',tabName)        
+        simplisity_setCookieValue('tabName@(sessionParams.ModuleId)',tabName)
+        if (tabName == 'text' && reload) location.reload();
     }
+    function showCodeMirror() {
+        setTimeout(() => {
+            // pause to allow codemirror.js to load.
+            $('#editorwrapper').show();
 
+            myCodeMirror = CodeMirror.fromTextArea(document.getElementById("htmltext"), {
+                mode: 'htmlmixed',
+                theme: "night"
+            });
+
+            myCodeMirror.setSize($('#editorwrapper').width(), $('#editorwrapper').height());
+            $('#htmltext').focus();
+        }, 300);
+    }
 </script>
 
