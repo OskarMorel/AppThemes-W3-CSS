@@ -90,7 +90,11 @@
         });
         $('.menu' + tabName).addClass('w3-grey');
         simplisity_setCookieValue('tabName@(sessionParams.ModuleId)',tabName)
-        if (tabName == 'text' && reload) location.reload();
+        if (tabName == 'text' && reload) 
+        {
+            $('#editorwrapper').hide();
+            location.reload();
+        }
     }
     function showCodeMirror() {
         setTimeout(() => {
