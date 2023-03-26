@@ -6,9 +6,5 @@
 @using DNNrocketAPI.Components;
 
 @{
-    var portalCatData = (PortalCatalogLimpet)Model.List.First();
-    var portalData = new PortalLimpet(portalCatData.PortalId);
     var sessionParams = (SessionParams)Model.SessionParamsData;
-    var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme");
-    var remoteModule = (RemoteModule)Model.GetDataObject("remotemodule");
 }
