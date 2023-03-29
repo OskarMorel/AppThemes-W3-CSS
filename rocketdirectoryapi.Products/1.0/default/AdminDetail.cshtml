@@ -39,6 +39,8 @@
         info = articleData.Info;
     }
 
+    var moduleedit = sessionParams.Info.GetXmlPropertyBool("r/moduleedit");
+
 }
 
 @RenderLanguageSelector("articleadmin_editarticle", "{\"articleid\":\"" + articleData.ArticleId + "\"}", appThemeSystem, Model)
@@ -48,7 +50,19 @@
     <div id="articleeditcontent" class='w3-animate-opacity '>
 
         <div class="w3-bar  w3-padding">
-            <div class="w3-button simplisity_click" s-cmd="articleadmin_editlist" s-fields=''>@ButtonIcon(ButtonTypes.back)</div>
+            @if (!moduleedit)
+            {
+                <div class="w3-button simplisity_click" s-cmd="articleadmin_editlist" s-fields=''>@ButtonIcon(ButtonTypes.back)</div>
+            }
+            else
+            {
+                var rtnUrl = DNNrocketUtils.NavigateURL(sessionParams.TabId, new string[0]);
+                <a href="@rtnUrl" class="w3-padding w3-button w3-black " style="text-decoration:none;" onclick="$('.simplisity_loader').show();">
+                    <span class="">
+                        @ButtonText(ButtonTypes.back)
+                    </span>
+                </a>                
+            }
             <div class="w3-button w3-theme-action simplisity_click savearticlebutton langchangesave" s-before="articlerichtextSave" s-cmd="articleadmin_savedata" s-post="#articledatasection" s-list=".@articleData.ImageListName,.@articleData.DocumentListName,.@articleData.LinkListName" s-fields='{"articleid":"@articleData.ArticleId"}'>@ButtonText(ButtonTypes.save)</div>
             @if (articleData.Exists)
             {
@@ -159,7 +173,21 @@
 
 
         openSection(sectionName);
-        selectMenu('articleadmin');
+
+    @if (!moduleedit)
+    {
+        <text>
+                selectMenu('articleadmin');
+        </text>
+    }
+    else
+    {
+        <text>
+                $(document).simplisityStartUp('/Desktopmodules/dnnrocket/api/rocket/action', { systemkey: 'rocketdirectoryapi', debug: false });
+                $('.simplisity_loader').hide();
+        </text>    
+    }
+
 
     });
 

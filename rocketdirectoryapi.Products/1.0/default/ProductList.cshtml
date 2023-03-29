@@ -9,7 +9,8 @@
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketDirectoryAPI/App_LocalResources/")
 
-@{ var sessionParams = (SessionParams)Model.SessionParamsData;
+@{ 
+    var sessionParams = (SessionParams)Model.SessionParamsData;
     var articleDataList = (ArticleLimpetList)Model.GetDataObject("articlelist");
     var portalCatalog = (PortalCatalogLimpet)Model.GetDataObject("portalcontent");
     var moduleSettings = (ModuleContentLimpet)Model.GetDataObject("modulesettings");
