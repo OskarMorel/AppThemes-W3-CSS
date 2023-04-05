@@ -43,7 +43,11 @@
 
 }
 
-@RenderLanguageSelector("articleadmin_editarticle", "{\"articleid\":\"" + articleData.ArticleId + "\"}", appThemeSystem, Model)
+@{
+    var sFieldDict = new Dictionary<string, string>();
+    sFieldDict.Add("articleid", articleData.ArticleId.ToString());
+}
+@RenderLanguageSelector("articleadmin_editarticle", sFieldDict, appThemeSystem, Model)
 
 <div id="articleedit">
 
