@@ -3,66 +3,58 @@
 @using Simplisity;
 @using RocketEcommerceAPI.Components;
 @using DNNrocketAPI.Components;
+@using RocketPortal.Components;
 
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketECommerce/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketECommerceAPI/App_LocalResources/")
 
 @{
     var paymentData = (PaymentLimpet)Model.List.First();
-    var remoteParam = (RemoteLimpet)Model.GetDataObject("remoteparam");
+    var sessionParams = (SessionParams)Model.SessionParamsData;
     var info = new SimplisityInfo(paymentData.Record);
-    info.Lang = remoteParam.CultureCode;
-    var portalShop = new PortalShopLimpet(PortalUtils.GetPortalId(), remoteParam.CultureCode);
-    var notificationLimpet = new NotificationLimpet(portalShop.PortalId, remoteParam.CultureCode);
+    info.Lang = sessionParams.CultureCode;
+    var portalShop = new PortalShopLimpet(PortalUtils.GetPortalId(), sessionParams.CultureCode);
+    var portalData = new PortalLimpet(PortalUtils.GetPortalId());
+    var notificationLimpet = new NotificationLimpet(portalShop.PortalId, sessionParams.CultureCode);
     var systemData = new SystemLimpet("rocketecommerce");
-    var adminlink = portalShop.EngineUrlWithProtocol.TrimEnd('/') + "/DesktopModules/DNNrocketModules/RocketEcommerce/admin.html";
-    var companyData = new CompanyLimpet(PortalUtils.GetPortalId(), remoteParam.CultureCode);
-    var apiurl = portalShop.EngineUrlWithProtocol.TrimEnd('/') + "/Desktopmodules/dnnrocket/api/rocket/action";
+    var adminlink = portalData.EngineUrlWithProtocol.TrimEnd('/') + "/DesktopModules/DNNrocketModules/RocketEcommerce/admin.html";
+    var companyData = new CompanyLimpet(PortalUtils.GetPortalId(), sessionParams.CultureCode);
+    var apiurl = portalData.EngineUrlWithProtocol.TrimEnd('/') + "/Desktopmodules/dnnrocket/api/rocket/action";
 }
 
 <div id="datasection" class="rocketecommerce_paymentform">
     <div class="w3-container">
 
-        <div class="w3-col s1 m3  l4 ">
-            <div class="w3-row w3-small w3-hide-small">
-                <div>
-                    @companyData.CompanyName
-                </div>
-                <div>
-                    @BreakOf(companyData.DisplayAddress)
-                </div>
-                <br />
-                <div>
-                    @companyData.WebsiteUrl
-                </div>
-                @if (companyData.ContactEmail != "")
-                {
-                    <div>
-                        @ResourceKey("RE.email"):&nbsp;@companyData.ContactEmail
-                    </div>
-                }
-                @if (companyData.Phone != "")
-                {
-                    <div>
-                        @ResourceKey("RE.tel"):&nbsp;@companyData.Phone
-                    </div>
-                }
+        <div class="w3-row w3-padding ">
 
-            </div>
-        </div>
-        <div class="w3-col s10 m6 l4 w3-center">
-
-            <div class="w3-row w3-padding ">
+            <div class="w3-quarter ">
                 @if (companyData.LogoRelPath != "")
                 {
-                    <img src="@ThumbnailImageUrl(companyData.LogoRelPath, 0, 120)" style="" class="" />
+                    <img src="@ImageUrl(companyData.LogoRelPath, 0, 120)" style="" class="" />
                 }
             </div>
-            <div class="w3-row w3-padding w3-large">
+            <div class="w3-threequarter w3-padding">
                 <b>
                     @companyData.CompanyName
                 </b>
+                <div class="w3-row w3-small">
+                    @companyData.WebsiteUrl <br />
+                    @companyData.ContactEmail <br />
+                    @companyData.Phone <br />
+                </div>
+
+                @if (UserUtils.IsManager())
+                {
+                    <div class="w3-button w3-padding">
+                        <a href="/sysadmin/rocketpayment" class="w3-tiny  w3-text-grey" target="_blank">@ResourceKey("DNNrocket.admin")</a>
+                    </div>
+                }
+
             </div>
+
+        </div>
+
+        <div class="w3-row w3-padding ">
 
             @if (!paymentData.Exists)
             {
@@ -116,7 +108,7 @@
                     </p>
                 }
 
-                <a class="w3-col m12 w3-button w3-border w3-margin-top  w3-xlarge  w3-round w3-blue " href='@(portalShop.PaymentPageUrl)'>@ResourceKey("RE.newpayment")</a>
+                <a class="w3-col m12 w3-button w3-border w3-margin-top  w3-xlarge  w3-round w3-blue " href='javascript:void(0)' onclick="window.location = window.location.href.split('?')[0];">@ResourceKey("RE.newpayment")</a>
 
             }
             else
@@ -132,14 +124,12 @@
                     </p>
                 }
 
-                <a class="w3-col m12 w3-button w3-border w3-margin-top  w3-xlarge  w3-round w3-blue " href='@(portalShop.PaymentPageUrl + "?key=" + paymentData.PaymentKey)'>@ResourceKey("RE.retrypayment")</a>
+                        <a class="w3-col m12 w3-button w3-border w3-margin-top  w3-xlarge  w3-round w3-blue " href='javascript:void(0)' onclick="window.location = window.location.href.split('?')[0] + '?key=' + paymentData.PaymentKey;">@ResourceKey("RE.retrypayment")</a>
 
             }
 
 
         </div>
-                <div class="w3-col s1 m3 l4 w3-right-align">
-                </div>
             }
         </div>
     </div>
@@ -147,6 +137,18 @@
 
 <script>
     $(document).ready(function () {
-        $(document).simplisityStartUp('@apiurl', { systemkey: 'rocketecommerce', debug: false });
+
+        simplisity_injectlink('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/css/w3.css');
+        simplisity_injectlink('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/Simplisity/css/simplisity.css');
+        simplisity_injectscript('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/Simplisity/js/simplisity.js');
+        simplisity_injectscript('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/js/jquery.validate.min.js');
+
+        @if (DNNrocketUtils.GetCurrentLanguageCode() != "en")
+        {
+            <text>
+                simplisity_injectscript('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/js/localization/messages_@(DNNrocketUtils.GetCurrentLanguageCode()).js');
+            </text>
+        }
+
     });
 </script>

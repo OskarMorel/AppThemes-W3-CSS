@@ -20,6 +20,7 @@
     var apiurl = portalData.EngineUrlWithProtocol.TrimEnd('/') + "/Desktopmodules/dnnrocket/api/rocket/action";
 }
 
+
 <div id="datasection" class="rocketecommerce_paymentform simplisity_panel">
     <div class="w3-container w3-margin">
 
@@ -88,7 +89,7 @@
                 foreach (var p in payList)
                 {
     <div class="w3-row w3-padding">
-        <div style="cursor:pointer;" class="w3-card-2 w3-margin-bottom w3-hover-light-grey dovalidatepayment simplisity_click " s-before="validatePayment" s-cmd="remote_pay" s-return="document" s-post="#datasection" s-fields='{"providerkey":"@(p.PaymentProvKey())","systemkey":"rocketecommerce"}'>
+        <div style="cursor:pointer;" class="w3-card-2 w3-margin-bottom w3-hover-light-grey dovalidatepayment simplisity_click " s-before="validatePayment" s-cmd="remote_publicpay" s-post="#datasection" s-fields='{"providerkey":"@(p.PaymentProvKey())","systemkey":"rocketpayment"}'>
             <div class="w3-button w3-large @(buttoncolor)" style="width:100%;">@ResourceKey("RE.pay")</div>
         </div>
     </div> buttoncolor = "w3-pale-green";
@@ -104,13 +105,26 @@
 <script>
     $(document).ready(function () {
 
+        simplisity_injectlink('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/css/w3.css');
+        simplisity_injectlink('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/Simplisity/css/simplisity.css');
+        simplisity_injectscript('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/Simplisity/js/simplisity.js');
+        simplisity_injectscript('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/js/jquery.validate.min.js');
+
+        @if (DNNrocketUtils.GetCurrentLanguageCode() != "en")
+        {
+            <text>
+                simplisity_injectscript('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/js/localization/messages_@(DNNrocketUtils.GetCurrentLanguageCode()).js');
+            </text>
+        }
+
+
         // Take ALL params passed to the page and pass them to the server as hidden fields in paramInfo.
         var urlParams = new URLSearchParams(window.location.search);
         urlParams.forEach(function (value, key) {
             simplisity_setParamField(key, value);
         });
 
-        $(document).simplisityStartUp('@apiurl', { systemkey: 'rocketpayment', debug: false });
+        $(document).simplisityStartUp('@apiurl', { systemkey: 'rocketpayment', debug: false });        
 
         if (urlParams.get('amount') != null && typeof urlParams.get('amount') != 'undefined' && urlParams.get('amount') != '') {
             $('#amountpay').val(urlParams.get('amount'));
@@ -118,6 +132,8 @@
         if (urlParams.get('ref') != null && typeof urlParams.get('ref') != 'undefined' && urlParams.get('ref') != '') {
             $('#invoiceref').val(urlParams.get('ref'));
         }
+        
+        $('.simplisity_loader').hide();
 
     });
 
