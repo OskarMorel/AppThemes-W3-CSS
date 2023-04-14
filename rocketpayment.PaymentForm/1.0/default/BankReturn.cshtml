@@ -124,8 +124,7 @@
                     </p>
                 }
 
-                        <a class="w3-col m12 w3-button w3-border w3-margin-top  w3-xlarge  w3-round w3-blue " href='javascript:void(0)' onclick="window.location = window.location.href.split('?')[0] + '?key=' + paymentData.PaymentKey;">@ResourceKey("RE.retrypayment")</a>
-
+                <a class="w3-col m12 w3-button w3-border w3-margin-top  w3-xlarge  w3-round w3-blue " href="@(portalShop.PaymentPageUrl)?key=@(paymentData.PaymentKey)">@ResourceKey("RE.retrypayment")</a>
             }
 
 
@@ -149,6 +148,7 @@
                 simplisity_injectscript('@(portalData.EngineUrlWithProtocol.TrimEnd('/'))/DesktopModules/DNNrocket/js/localization/messages_@(DNNrocketUtils.GetCurrentLanguageCode()).js');
             </text>
         }
+
 
     });
 </script>
