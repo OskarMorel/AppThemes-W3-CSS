@@ -61,8 +61,16 @@
 
 <!-- *********** Lien *********** -->
 <div class="w3-row w3-padding">
-    @RenderTemplate("links.cshtml", appThemeView, Model, true)
-    @RenderTemplate("image1-shared.cshtml", appThemeView, Model, true)
+
+    <div class="w3-row w3-border-bottom w3-light-grey w3-padding">
+        <h5>Link</h5>
+    </div>
+    <div class="w3-row w3-border w3-padding">
+        @RenderTemplate("ArticleLink.cshtml", appThemeSystem, Model, true)
+    </div>
+
+    @RenderTemplate("ArticleImage.cshtml", appThemeSystem, Model, true)
+
 </div>
 
 
