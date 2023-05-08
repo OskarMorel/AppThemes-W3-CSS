@@ -32,10 +32,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="rocketdirectoryapi.Products\1.0\modt\" />
-    <Folder Include="rocketecommerceapi.EssentialCategory\1.0\dep\" />
-    <Folder Include="rocketecommerceapi.EssentialCategory\1.0\modt\" />
-  </ItemGroup>
-
 </Project>
