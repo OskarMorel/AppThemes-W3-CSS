@@ -4,28 +4,21 @@
 @using DNNrocketAPI.Components;
 @using RocketPortal.Components;
 
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketECommerce/App_LocalResources/")
-
-@{ var productDataList = (ProductLimpetList)Model.GetDataObject("productlist");
+@{ 
+    var productDataList = (ProductLimpetList)Model.GetDataObject("productlist");
     var companyData = (CompanyLimpet)Model.GetDataObject("companydata"); ;
     var cartData = (CartLimpet)Model.GetDataObject("cartdata");
     var sessionParams = (SessionParams)Model.SessionParamsData;
     var portalShop = (PortalShopLimpet)Model.GetDataObject("portalshop");
     var portalData = (PortalLimpet)Model.GetDataObject("portaldata");
-    var remoteModule = (RemoteModule)Model.GetDataObject("remotemodule");
-    var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme");
+    var appTheme = (AppThemeLimpet)Model.GetDataObject("appthemeview");
     var appThemeDefault = (AppThemeLimpet)Model.GetDataObject("appthemedefault");
     var categoryDataList = (CategoryLimpetList)Model.GetDataObject("categorylist");
-    var categoryData = new CategoryLimpet(portalShop.PortalId, productDataList.CategoryId, sessionParams.CultureCode);
-
-    var hbsDict = new Dictionary<string, SimplisityInfo>();
-    hbsDict.Add("sessionparams", sessionParams.Info);
-    hbsDict.Add("remotemodule", new SimplisityInfo(remoteModule.Record));
-    hbsDict.Add("resxlist", RenderRazorUtils.GetResxPaths(Processdata));
+    var moduleSettings = (ModuleContentLimpet)Model.GetDataObject("modulesettings");
+    var categoryData = (CategoryLimpet)Model.GetDataObject("categorydata");
 }
 
-@AddProcessData("resourcepath", "/DesktopModules/RocketThemes/" + remoteModule.AppThemeViewFolder + "/" + remoteModule.AppThemeViewVersion + "/resx/")
+@AddProcessDataResx(appTheme, true)
 
 <h1>
     @if (!categoryData.Exists)
@@ -42,15 +35,29 @@
             @RenderTemplate("SearchBanner.cshtml", appThemeDefault, Model, true)
             @foreach (ProductLimpet productData in productDataList.GetArticleList())
             {
-                hbsDict.Remove("data");
-                hbsDict.Add("data", productData.Info);
-                @RenderHandleBarsRE(hbsDict, appTheme, "productlistrow.hbs", remoteModule.ModuleRef, "")
+                var urlparams = new Dictionary<string, string>();
+                urlparams.Add("pid", productData.ProductId.ToString());
+
+                <div class="w3-col s12 m6 l3 w3-padding w3-center">
+                    <a href="@(DNNrocketUtils.NavigateURL(sessionParams.TabId, urlparams, productData.Name))">
+                        <img class="sliderind@(moduleSettings.ModuleRef)" src="@ImageUrl(productData.DefaultImageUrl(),360,360)" style="width:100%">
+                    </a>
+                    <div class="w3-row w3-padding w3-center">
+                        <div class="">@productData.PriceMinimumDisplay()</div>
+                    </div>
+                    <div class="w3-padding" style="height:80px;overflow:hidden;">
+                        <a href="@(DNNrocketUtils.NavigateURL(sessionParams.TabId, urlparams, productData.Name))" class="ajaxproduct" s-cmd="remote_productdetail" s-return='#ecommerce-tag' s-fields='{"systemkey":"rocketecommerceapi","template":"ProductDetail.cshtml","productid":"@productData.ProductId","remotelanguage":"@sessionParams.CultureCode","remotecall":"True","dataref":"@(moduleSettings.DataRef)"}' productid='@productData.ProductId' title="@productData.Name">
+                            @productData.Name
+                        </a>
+                    </div>
+                </div>
+
             }
         </div>
         @RenderTemplate("ProductPaging.cshtml", appThemeDefault, Model, true)
     </div>
     <div class="w3-quarter">
-        <!-- Cart (Include design to stop flicker on the page) -->
+
         <div id="minicartdisplay" class="productlistcart">
 
             <div class="minicartdisplay">
@@ -61,7 +68,7 @@
                         <span class="w3-right"><strong><span id="a-carttotal">&nbsp;</span></strong></span>
                     </div>
                 </div>
-                <a id="cartdisplay" class="w3-button w3-light-grey simplisity_click " s-cmdurl="@(sessionParams.ApiUrl)" s-before="clearMiniCartJson" s-return="#ecommerce-tag" s-cmd="rocketecommerceapi_cartlist" s-fields='{"template":"cartlist.cshtml","moduleref":"@(remoteModule.ModuleRef)"}'>@MaterialIcon("shopping_cart")&nbsp;@(ResourceKey("RE.viewcart", sessionParams.CultureCode))</a>
+                <a id="cartdisplay" class="w3-button w3-light-grey simplisity_click " s-cmdurl="@(sessionParams.ApiUrl)" s-before="clearMiniCartJson" s-return="#ecommerce-tag" s-cmd="rocketecommerceapi_cartlist" s-fields='{"template":"cartlist.cshtml","moduleref":"@(moduleSettings.ModuleRef)"}'>@MaterialIcon("shopping_cart")&nbsp;@(ResourceKey("RE.viewcart", sessionParams.CultureCode))</a>
             </div>
 
         </div>
